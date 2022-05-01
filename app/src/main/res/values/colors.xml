@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2F7DDD</color>
+    <color name="colorPrimaryDark">#2F8CDD</color>
+    <color name="colorAccent">#90ffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="white70">#70ffffff</color>
+    <color name="darkGrey">#363131</color>
+    <color name="darkGrey70">#70363131</color>
+    <color name="darkGrey90">#80363131</color>
+    <color name="headingColor">#141212</color>
+    <color name="actionBarText">#272525</color>
+    <color name="redCard">#DB3A3A</color>
+
+    <color name="text_color">#302e6b</color>
+
+    <color name="white30">#ffffff</color>
+    <color name="primary30">#30c43b67</color>
+
+    <color name="bgBottomNavigation">#fe485a</color>
+    <color name="black_overlay">#535c68</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="purple_700">#3395ff</color>
+    <color name="teal_200">#3395ff</color>
+
+
+</resources>

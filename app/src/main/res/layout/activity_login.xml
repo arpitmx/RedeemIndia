@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.redeemindia.in.Login"
+    >
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageFilterView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        android:src="#fff"/>
+
+
+    <TextView
+        android:id="@+id/loot_title"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="51dp"
+        android:fontFamily="@font/popblack"
+        android:gravity="center"
+        android:text="Redeem India"
+        android:textColor="@color/redCard"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
+
+
+    <TextView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="51dp"
+        android:fontFamily="@font/popblack"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loot_title"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71" />
+
+    <LinearLayout
+        android:id="@+id/imageView5"
+        android:layout_width="290dp"
+        android:layout_height="409dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="57dp"
+        android:background="@drawable/card_background_red"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:paddingStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loot_title"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.71">
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="169dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="87dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/edittext_layout_black"
+            android:ems="10"
+            android:fontFamily="@font/popinmedium"
+            android:hint = "Email"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="5dp"
+            android:textColor="@color/white30"
+            android:textColorHint="@color/darkGrey70"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="169dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginRight="42dp"
+            android:background="@drawable/edittext_layout_black"
+            android:ems="10"
+            android:fontFamily="@font/popinmedium"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingBottom="5dp"
+            android:textColor="@color/white30"
+            android:textColorHint="@color/darkGrey70"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="106dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="74dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="73dp"
+            android:background="@drawable/card_background_yellow"
+            android:fontFamily="@font/popinmedium"
+            android:text="Login"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/sendmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/popinmedium"
+            android:text="Resend Mail"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
