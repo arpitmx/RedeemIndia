@@ -1,15 +1,26 @@
 package com.redeemindia.in.models;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 public class User {
 
-    String email, country , state, city, uname, password , accesscode , firstname , middlename, lastname, dob ;
+    String UID , email, country , state, city, uname, password , accesscode , firstname , middlename, lastname, dob ;
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
     public User() {
     }
 
-    public User(String email, String country, String state, String city, String uname, String password, String accesscode, String firstname, String middlename, String lastname, String dob) {
+
+    public User(String uID , String email, String country, String state, String city, String uname, String password, String accesscode, String firstname, String middlename, String lastname, String dob) {
         this.email = email;
         this.country = country;
         this.state = state;
@@ -21,7 +32,11 @@ public class User {
         this.middlename = middlename;
         this.lastname = lastname;
         this.dob = dob;
+        this.UID = uID;
     }
+
+
+
 
     public String getEmail() {
         return email;

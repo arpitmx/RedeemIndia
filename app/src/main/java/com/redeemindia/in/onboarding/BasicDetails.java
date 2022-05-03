@@ -1,36 +1,38 @@
 package com.redeemindia.in.onboarding;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.redeemindia.in.ProgressBarAnimation;
 import com.redeemindia.in.R;
 import com.redeemindia.in.databinding.FragmentBasicDetailsBinding;
 import com.redeemindia.in.models.User;
-import com.redeemindia.in.viewmodel.BasicDetailsViewModel;
+import com.redeemindia.in.viewmodel.OnboardingViewModel;
+
+import java.util.Random;
 
 public class BasicDetails extends Fragment {
 
@@ -39,22 +41,13 @@ public class BasicDetails extends Fragment {
     EditText country, state, city, username, email, password;
     Button next;
     User user;
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private static final String TAG = "BasicDetails";
     View view;
-
-    private FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+    Random random;
 
     ProgressDialog dialog;
     FragmentBasicDetailsBinding binding;
-    BasicDetailsViewModel viewModel;
-
-    private String mParam1;
-    private String mParam2;
-
+    OnboardingViewModel viewModel;
 
     public BasicDetails() {
         // Required empty public constructor
@@ -78,58 +71,36 @@ public class BasicDetails extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        viewModel = new ViewModelProvider(this).get(BasicDetailsViewModel.class);
-        viewModel.init();
-        initializeViews();
+        random = new Random();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
        binding = FragmentBasicDetailsBinding.inflate(inflater, container, false);
+       Toast.makeText(getContext(), "Enter basic details", Toast.LENGTH_SHORT).show();
        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
+
+        initializeViews();
+        setRandomDetails();
+
+
+
 
         next.setOnClickListener(view1 -> {
-            if (validation()){
+            if (!validation()){
                 Toast.makeText(getActivity(), "Please fill in all the field", Toast.LENGTH_SHORT).show();
             }else {
-
-                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                        .addOnCompleteListener(getActivity(), task -> {
-
-                            if (task.isSuccessful()) {
-                                dialog.dismiss();
-                                firebaseUser = mAuth.getCurrentUser();
-                                assert firebaseUser != null;
-                                String con = country.getText().toString();
-                                String st = state.getText().toString();
-                                String ci = city.getText().toString();
-                                String uname = username.getText().toString();
-                                String pass = password.getText().toString();
-                                String em = email.getText().toString();
-
-                               if  (viewModel.createUser(firebaseUser,st,ci,con,uname,em,pass)){
-                                   Toast.makeText(getContext(), "Details posted, now verify", Toast.LENGTH_SHORT).show();
-                                   syncSharedPrefs();
-                                   loadNextFragment();
-                               }else {
-                                   Toast.makeText(getContext(), "Error in details posting", Toast.LENGTH_SHORT).show();
-                               }
-
-                            } else {
-                                dialog.dismiss();
-                                Toast.makeText(getContext(), "Firebase : Registration failed." + task.getException().getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
+                MainDetails fragment = new MainDetails();
+                syncSharedPrefs();
+                increaseProgress(70);
+                loadNextFragment(fragment) ;
 
             }
         });
@@ -137,14 +108,26 @@ public class BasicDetails extends Fragment {
 
     }
 
+    void increaseProgress(int p){
+     ProgressBar progressBar= getActivity().findViewById(R.id.progress_bar);
+
+        ProgressBarAnimation anim = new ProgressBarAnimation(progressBar, 30, 60);
+        anim.setDuration(800);
+        progressBar.startAnimation(anim);
+    }
+
+
+
+
 
     private void initializeViews() {
 
-        country = binding.countrytxt;
+        country =  binding.countrytxt;
         email = binding.emailtxt;
         state = binding.statetxt;
         city = binding.citytxt;
         username = binding.username;
+        password = binding.passtxt;
         next = binding.submit;
         dialog=new ProgressDialog(getContext());
     }
@@ -166,7 +149,7 @@ public class BasicDetails extends Fragment {
         {
             validate=false;
         }
-        else if(username.getText()==null||username.getText().toString().trim().length()==0 && username.length()<6)
+        else if( username.getText().toString().trim().length()<6 || username.getText()==null||username.getText().toString().trim().length()==0 )
         {
             validate=false;
             username.setError("Username must be of at-least 6 characters");
@@ -178,6 +161,14 @@ public class BasicDetails extends Fragment {
          {
              validate=false;
          }
+         else if( password.getText().toString().trim().length()<6 || password.getText()==null||password.getText().toString().trim().length()==0 )
+         {
+             validate=false;
+             password.setError("Password must be of atleast 6 characters");
+             password.requestFocus();
+             InputMethodManager mgr = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+             mgr.showSoftInput(username, InputMethodManager.SHOW_IMPLICIT);
+         }
 
         return validate;
 
@@ -185,7 +176,7 @@ public class BasicDetails extends Fragment {
 
 
     public void syncSharedPrefs() {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("LootPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("RIPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("com.ri.uname", username.getText().toString());
@@ -193,20 +184,27 @@ public class BasicDetails extends Fragment {
         editor.putString("com.ri.country", country.getText().toString());
         editor.putString("com.ri.city", city.getText().toString());
         editor.putString("com.ri.email", email.getText().toString());
+        editor.putString("com.ri.passwd", password.getText().toString());
         editor.putInt("com.ri.onboardstage", 2);
-
         editor.apply();
+
     }
 
-    private void loadNextFragment(){
-        OtpFragment fragment = OtpFragment.newInstance();
-        FragmentManager fragmentManager = getChildFragmentManager();
+    private void loadNextFragment(Fragment fragment){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.main_frame,fragment)
+                .replace(R.id.contaier,fragment)
                 .commit();
     }
 
 
+    public void setRandomDetails(){
+        binding.countrytxt.setText("India");
+        binding.statetxt.setText("UP");
+        binding.citytxt.setText("Lucknow");
+        binding.username.setText("RandomUser"+ random.nextInt(10000));
+        binding.emailtxt.setText("arpitmaurya"+random.nextInt(10000)+"@gmail.com");
+        binding.passtxt.setText("123456");
 
-
+    }
 }

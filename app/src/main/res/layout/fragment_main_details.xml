@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.redeemindia.in.activity.Register">
+    tools:context="com.redeemindia.in.onboarding.MainDetails">
 
 
 
@@ -146,7 +146,7 @@
                 android:ems="10"
                 android:fontFamily="@font/popinregular"
                 android:hint="Access code (4 digit)"
-                android:inputType="phone"
+                android:inputType="numberPassword"
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:textColor="@color/darkGrey"
@@ -170,6 +170,7 @@
                 android:drawableTint="@color/darkGrey70"
                 android:hint="Date of Birth"
                 android:paddingStart="15dp"
+
                 android:paddingTop="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
@@ -190,7 +191,7 @@
                 android:elevation="2dp"
                 android:focusable="true"
                 android:fontFamily="@font/popinsemibold"
-                android:text="Send otp"
+                android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="@color/white30"
                 android:textSize="14sp" />
