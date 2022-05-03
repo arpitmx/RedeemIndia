@@ -16,7 +16,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".onboarding.Register"
+            android:name=".activity.Register"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

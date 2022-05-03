@@ -1,0 +1,233 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.redeemindia.in.activity.Register">
+
+
+
+
+    <!--    <androidx.constraintlayout.utils.widget.ImageFilterView-->
+    <!--        android:id="@+id/imageFilterView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:src="@drawable/squidgames_pos"-->
+    <!--        android:background="@color/darkGrey70"-->
+    <!--        android:scaleType="fitCenter"-->
+
+    <!--        />-->
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background_grey"
+            android:orientation="vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/popinsemibold"
+                android:gravity="start"
+                android:paddingTop="10dp"
+                android:text="Create an account"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/countrytxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:gravity="center_vertical"
+                android:hint="Country"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+
+
+
+
+
+
+            <EditText
+                android:id="@+id/statetxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableStart="@drawable/ic_baseline_menu_book_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:hint="State"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+            <EditText
+                android:id="@+id/citytxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:gravity="center_vertical"
+                android:hint="City"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableStart="@drawable/ic_baseline_verified_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:hint="Username"
+                android:minEms="6"
+                android:inputType="textAutoComplete"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+
+
+            <EditText
+                android:id="@+id/emailtxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableStart="@drawable/ic_phone_black_24dp"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+
+            <EditText
+                android:id="@+id/passtxt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/card_background_white"
+                android:drawableStart="@drawable/ic_baseline_verified_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/darkGrey70"
+                android:ems="10"
+                android:fontFamily="@font/popinregular"
+                android:hint="Password"
+                android:minEms="6"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/darkGrey"
+                android:textColorHint="@color/darkGrey70"
+
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/et_size" />
+
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="300dp"
+                android:layout_height="@dimen/edit_text_size"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/card_background_white"
+                android:clickable="true"
+                android:elevation="2dp"
+                android:focusable="true"
+                android:fontFamily="@font/popinsemibold"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white30"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
